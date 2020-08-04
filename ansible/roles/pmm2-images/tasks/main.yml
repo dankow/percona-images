@@ -19,7 +19,7 @@
         description: Local YUM repository - x86_64
         baseurl: file:///tmp/RPMS
         gpgcheck: no
-        enabled: no
+        enabled: yes
 
     - name: Packages                   | Update OS
       yum:
@@ -116,8 +116,9 @@
           - pmm-update
           - percona-clickhouse-client
           - percona-clickhouse-server
+          - dbaas-controller
         state: installed
-        enablerepo: "pmm2-server"
+        enablerepo: "local"
 
     - name: PMM                        | Enable repo for pmm2-client
       command: percona-release enable {{ pmm_client_repos }}
